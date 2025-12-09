@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-service
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weather-service
+  template:
+    metadata:
+      labels:
+        app: weather-service
+    spec:
+      containers:
+        - name: weather-service
+          image: lattapon2540/weather-fake-service:v1
+          ports:
+            - containerPort: 3000
+          env:
+            - name: BUILD_VERSION
+              value: "v1"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 10
