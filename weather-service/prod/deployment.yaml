@@ -14,13 +14,13 @@ spec:
         app: weather-service
     spec:
       containers:
-  - name: weather-service
-    image: <DOCKER_USER>/weather-fake-service:v2
-    ports:
-      - containerPort: 3000
-    env:
-      - name: BUILD_VERSION
-        value: "v2"
+        - name: weather-service
+          image: lattapon2540/weather-fake-service:v2
+          ports:
+            - containerPort: 3000
+          env:
+            - name: BUILD_VERSION
+              value: "v2"
           readinessProbe:
             httpGet:
               path: /health
