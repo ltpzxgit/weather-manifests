@@ -10,7 +10,7 @@ This project is a **Weather Service (Fake API)** built to demonstrate a complete
 
 ## 📊 Architecture Diagram
 
-![Architecture](#####)
+######
 
 ---
 
